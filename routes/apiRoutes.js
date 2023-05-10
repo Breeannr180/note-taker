@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const fs = require("fs");
 
+
 //Route to handle API Requests for retrieving saved notes
 router.get('/notes', (req, res) => {
     // Read the contents of the JSON file
