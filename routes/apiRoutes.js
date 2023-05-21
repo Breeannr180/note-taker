@@ -48,7 +48,7 @@ router.post('/notes', (req, res) => {
 // Route to handle API requests for deleting notes
 router.delete('/notes/:id', (req, res) => {
       // Store id of user-selected note for deletion 
-      let id = req.params.id;
+      let noteId = req.params.id;
 
       // read file
       fs.readFile("./db/db.json", "utf8", function(err, data) {
@@ -63,7 +63,7 @@ router.delete('/notes/:id', (req, res) => {
           for (let i = 0; i < raw.length; i++) {
   
               // See if the user selected id matches any of the id's in raw
-              if (id == raw[i].id) {
+              if (noteId == raw[i].id) {
   
                   // If the id's match, splice the indexed note out of raw 
                   raw.splice(i,1);
@@ -79,14 +79,15 @@ router.delete('/notes/:id', (req, res) => {
   
                   });
   
-              };
+              }
   
-          };
-  
-      });
-      
-      // End response process
+        }
+          // End response process
       res.end(); 
+  
+    });
+      
+      
 });
 
 module.exports = router;
